@@ -30,15 +30,18 @@
 
     .title {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
     }
 
     .logo {
       color: #fff;
+      text-align: center;
     }
 
     .inputbox {
+      margin-top: 12px;
       margin-left: 12px;
+      text-align: center;
     }
 
     .octicon {
@@ -104,13 +107,17 @@
       <div class="result-box">
         <p>Example:</p>
         <p>&nbsp;</p>
-        <p class="pre">https://gist.<span class="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;github</span>.com/yukapril/a205600ac73e161f72b7fb5c7dd9cd84</p>
+        <p class="pre">https://gist.
+          <span class="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;github</span>.com/yukapril/a205600ac73e161f72b7fb5c7dd9cd84</p>
         <p class="pre">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇩</p>
-        <p class="pre">https://gist.<span class="red">fridaycoder</span>.com/yukapril/a205600ac73e161f72b7fb5c7dd9cd84</p>
+        <p class="pre">https://gist.
+          <span class="red">fridaycoder</span>.com/yukapril/a205600ac73e161f72b7fb5c7dd9cd84</p>
         <p>&nbsp;</p>
-        <p class="pre">https://gist.<span class="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;github</span>.com/yukapril/a205600ac73e161f72b7fb5c7dd9cd84.js</p>
+        <p class="pre">https://gist.
+          <span class="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;github</span>.com/yukapril/a205600ac73e161f72b7fb5c7dd9cd84.js</p>
         <p class="pre">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⇩</p>
-        <p class="pre">https://gist.<span class="red">fridaycoder</span>.com/yukapril/a205600ac73e161f72b7fb5c7dd9cd84.js</p>
+        <p class="pre">https://gist.
+          <span class="red">fridaycoder</span>.com/yukapril/a205600ac73e161f72b7fb5c7dd9cd84.js</p>
       </div>
     </div>
   </div>
@@ -120,7 +127,7 @@
 
     $input.addEventListener('input', function (e) {
       var val = e.target.value
-      if(val.indexOf('gist.github.com') >= 0) {
+      if (val.indexOf('gist.github.com') >= 0) {
         $result.innerHTML = val ? val.replace(/github/, 'fridaycoder') : '&nbsp;'
       } else {
         $result.innerHTML = 'what ?'
