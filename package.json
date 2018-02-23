@@ -1,0 +1,25 @@
+{
+  "name": "github-gist-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukapril/github-gist-proxy.git"
+  },
+  "keywords": [],
+  "author": "yukapril",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yukapril/github-gist-proxy/issues"
+  },
+  "homepage": "https://github.com/yukapril/github-gist-proxy#readme",
+  "dependencies": {
+    "koa": "^2.5.0",
+    "request": "^2.83.0"
+  }
+}
