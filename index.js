@@ -15,12 +15,14 @@ const readFile = file => {
     })
 }
 
-const getGist = (url, headers) => {
+const getGist = (url, useragent) => {
     return new Promise((resolve, reject) => {
         request({
             method: 'GET',
             uri: url,
-            headers: headers
+            headers: {
+                'user-agent': useragent
+            }
         }, (err, response, body) => {
             if (err) {
                 reject(err)
@@ -43,18 +45,15 @@ app.use(async ctx => {
         // const prefix = 'https://gist.coding.net'
         const url = prefix + reqUrl
         try {
-            const { response, body } = await getGist(url, ctx.headers)
+            const { response, body } = await getGist(url, ctx.headers['user-agent'])
             ctx.status = response.statusCode
-            Object.keys(response.headers).forEach(header => {
-                ctx.set(header, response.headers[header])
-            })
+            ctx.set('content-type', response.headers['content-type'])
             ctx.body = body
         } catch (err) {
             console.log(err)
             ctx.body = ''
         }
     }
-
 })
 
 app.listen(5001)
