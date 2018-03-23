@@ -15,11 +15,12 @@ const readFile = file => {
     })
 }
 
-const getGist = url => {
+const getGist = (url, headers) => {
     return new Promise((resolve, reject) => {
         request({
             method: 'GET',
-            uri: url
+            uri: url,
+            headers: headers
         }, (err, response, body) => {
             if (err) {
                 reject(err)
@@ -42,9 +43,11 @@ app.use(async ctx => {
         // const prefix = 'https://gist.coding.net'
         const url = prefix + reqUrl
         try {
-            const { response, body } = await getGist(url)
+            const { response, body } = await getGist(url, ctx.headers)
             ctx.status = response.statusCode
-            ctx.set('content-type', response.headers['content-type'])
+            Object.keys(response.headers).forEach(header => {
+                ctx.set(header, response.headers[header])
+            })
             ctx.body = body
         } catch (err) {
             console.log(err)
